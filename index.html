@@ -109,16 +109,17 @@
 			flex-flow: row wrap;
 			position: fixed;
 			width: 101%;
-			z-index: 1000;
+			z-index: 50;
 			margin-top: -10px;
 		}
 
 		#websiteTitle {
-			margin: 5px;
-			margin-left: 10px;
+			margin: 0.1em;
+			margin-left: -1em;
 			vertical-align:middle;
 			padding-top: 0.4em;
 			cursor: pointer;
+			z-index: 100;
 		}
 
 		#titleLogo {
@@ -128,6 +129,7 @@
 			padding-left: 1em;
 			padding-right: 1em;
 			float: left;
+			margin-right: 1em;
 		}		
 
 		#backgroundAnimation {
@@ -190,7 +192,7 @@
 					<img src='Portrait.jpg'></img>
 				</div>
 				<div class='pairMember container'>
-					<h1>These are some things I am interested in.</h1>
+					<h1><!--These are some things-->Topics I am interested in.</h1>
 					<ul style='list-style-type: square; font-size: 1.2em;'>
 						<li>Numerical computing
 							<ul>
@@ -219,10 +221,10 @@
 			</div>
 			<div class='centered'>
 				<div class='pairMember container'>
-					<h1>This is what I have to say about myself.</h1>
+					<h1><!--This is what I have to say about myself.-->A brief bit about me.</h1>
 					<p>
 						I have a passion for both engineering and computing.
-						I'm an undergraduate student at Washington State University.  I get my BS
+						I am an undergraduate student at Washington State University.  I get my BS
 						in mechanical engineering on September 1st, 2017.  I am currently
 						planning to take a gap year and work in industry before returning
 						to graduate school for applied math.
@@ -237,7 +239,7 @@
 			</div>
 			<div class='centeredPair'>
 				<div class='pairMember container'>
-					<h1>These are things I find fun.</h1>
+					<h1><!--These are things I find fun.-->Things I enjoy.</h1>
 					<ul style='list-style-type: square; font-size: 1.2em;'>
 						<li>Hiking</li>
 						<li>Road trips</li>
@@ -262,7 +264,7 @@
 				<div class='pairMember container'>
 					<h1>Some of the things I have worked on.</h1>
 					<p>
-						I've worked on a lot of different projects, most of which didn't make
+						I have worked on a lot of different projects, most of which didn't make
 						the cut for this website.  A few of them are listed here.  You can 
 						click on each image for more information.
 					<p/>
@@ -274,13 +276,24 @@
 					<a href='http://www.seattletimes.com/education-lab/wsu-everett-students-build-mars-rover-place-2nd-in-global-contest/'>
 						<img src='Rover.jpg'></img>
 					</a>
-					<p>An explanation of the picture.</p>
+					<p>
+						Collegiate mars rover design and build competition.  Came in
+						second place for the 2015-2016 season as a first year team,
+						ahead of more well known universities like Cornell and Yale.
+						The entire rover, which is nearly the size of a Smart Car, was
+						designed and precision manufactured by a team of just 14 mechanical
+						engineering students, including myself. 
+					</p>
 				</div>
 				<div class='pairMember container'>
 					<h1>Design, Build, Fly</h1>
 					<a href='FinalReport.pdf'>
 						<img src='dbfReport.png'></img>
 					</a>
+					<p>
+						Final report from the 2016-2017 WSU Design, Build, Fly team.
+						Designed and manufactured a compact, folding UAV.
+					</p>
 				</div>
 			</div>
 			<div class='centeredPair'>
@@ -289,27 +302,37 @@
 					<a href='https://www.youtube.com/watch?v=Vjru4J5qh7A'>
 						<img src='WebDev.png'></img>
 					</a>
+					<p>
+						A presentation overviewing how to make websites such as this one.
+						The webinar walks the audience through some of the basics of HTML,
+						CSS, and Javascript.  By the end of the seven minute 
+						presentation, the audience learns how to make a simple webpage featuring
+						a functioning clock.
+					</p>
 				</div>
 				<div class='pairMember container'>
 					<h1>Technical Instructions</h1>
 					<a href='TechnicalInstructions.pdf'>
 						<img src='TechnicalInstructions.png'></img>
 					</a>
+					<p>
+						Sample technical documentation for a product.
+					</p>
 				</div>
 			</div>
 			<div class='centered'>
 				<div class='pairMember container'>
-					<h1>My philosophy about work and learning.</h1>
+					<h1>My philosophy on work and learning.</h1>
 					<p>
-						If something isn't hard, then it's probably not worth doing.  I like to
-						push myself into new areas that I'm not familiar with so that I can
+						If something is not challenging, then it is probably not worth doing.  I like to
+						push myself into new areas that I am not familiar with so that I can
 						continue to grow my skills and knowledge.
-					<p/>
+					</p>
 				</div>
 			</div>
 			<div class='centeredPair'>
 				<div class='pairMember container'>
-					<h1>This is some of my experience.</h1>
+					<h1><!--This is some of my experience.-->My experience.</h1>
 					<ul style='list-style-type: square; font-size: 1.2em;'>
 						<li>Undergraduate research
 							<ul>
@@ -345,7 +368,7 @@
 					</ul>
 				</div>
 				<div class='pairMember container'>
-					<h1>These are some of my skills.</h1>
+					<h1><!--These are some of my skills.-->My skills.</h1>
 					<ul style='list-style-type: square; font-size: 1.2em;'>
 						<li>Software development
 							<ul>
@@ -388,12 +411,13 @@
 			<div class='smallSpacer'></div>
 			<div class='centeredPair'>
 				<div class='pairMember container'>
-					<h1>Contacting me is encouraged.</h1>
+					<h1><!--Contacting me is encouraged.-->Shoutouts are welcome.</h1>
 					<p>
 						Whether you want to discuss a research or work opportunity, or just have
 						a conversation about engineering and computing, I am always thrilled to
 						meet new people.  Drop me a line and let's talk.
 					</p>
+					<!--<p>(I promise all the pronouns are just a writing motif.)</p>-->
 				</div>
 				<div class='pairMember container'>
 					<h1>How to reach me.</h1>
@@ -425,6 +449,14 @@
 
 	<script>
 		let currentView = document.getElementById('About')
+		window.addEventListener('hashchange', handleHash)
+
+		handleHash()
+		function handleHash() {
+			if (window.location.hash) {
+				select(window.location.hash.slice(1), 0)
+			}
+		}
 
 		function select(viewName, scrollHeight) {
 			const newView = document.getElementById(viewName)
@@ -432,6 +464,7 @@
 			newView.style.display = 'inherit'
 			window.scrollTo(0, scrollHeight)
 			currentView = newView
+			window.location.hash = viewName
 		}
 	</script>
 
