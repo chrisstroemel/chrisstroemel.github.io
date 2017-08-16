@@ -166,7 +166,7 @@
 		<div id='navBar'>
 			<span class='navBarItem'>
 				<div id='titleLogo'></div>
-				<h1 id='websiteTitle' onclick='select("About", 0)'>Chris Stroemel</h1>
+				<h1 id='websiteTitle' onclick='select("Landing", 0)'>Chris Stroemel</h1>
 			</span>
 			<span class='navBarItem' id='navMenu'>
 				<a class='navLink' onclick='select("About", 800)'>About</a>
@@ -454,17 +454,25 @@
 		handleHash()
 		function handleHash() {
 			if (window.location.hash) {
-				select(window.location.hash.slice(1), 0)
+				select(window.location.hash.slice(1), true)
 			}
 		}
 
-		function select(viewName, scrollHeight) {
+		function select(originalViewName, calledFromHandleHash) {
+			let viewName = originalViewName
+			let scrollHeight = 0
+			if (viewName == 'Landing') {
+				viewName = 'About'
+			} else if (originalViewName == 'About') {
+				scrollHeight = 800;
+			}
 			const newView = document.getElementById(viewName)
 			currentView.style.display = 'none'
 			newView.style.display = 'inherit'
-			window.scrollTo(0, scrollHeight)
 			currentView = newView
-			window.location.hash = viewName
+			selectIteration = 0
+			window.location.hash = originalViewName
+			window.scrollTo(10000, scrollHeight)
 		}
 	</script>
 
