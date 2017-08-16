@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<script src='three.js'></script>
+	</head>
+
+	<style>
+		@font-face {
+			font-family: 'Roboto Slab';
+			font-style: normal;
+			font-weight: 400;
+			src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(RobotoSlabLatin.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+		}
+
+
+		body {
+			color: white;
+			background-color: black;
+			font-family: Roboto Slab;
+			margin-left: -5px;
+			margin-right: -5px;
+			overflow-x: hidden;
+			height: 100%;
+		}
+
+		img {
+			width: 100%;
+			background: white;
+		}
+
+		p {
+			font-size: 1.1em;
+		}
+
+		a.navLink {
+			margin-top: 1em;
+			margin-right: 0.8em;
+			text-align: right;
+			text-decoration:none;
+			font-size: 1.5em;
+			transition: 0.5s;
+			cursor: pointer;
+		}
+
+		a.navLink:hover {
+			color: black;
+			background-color: white;
+			padding: 0.2em;
+		}
+
+		.container {
+			background-color: rgba(0, 0, 0, 0.8);
+			box-shadow: inset 0 0 2em #141414;
+			padding: 1em;
+		}
+
+
+		.navBarItem {
+			min-width: 23em;
+			flex: 1;
+		}
+
+		.enormous {
+			font-size: 2.5em;
+		}
+
+		.big {
+			font-size: 1.5em;
+		}
+
+		.spacer {
+			height: 20em;
+		}
+
+		.smallSpacer {
+			height: 10em;
+		}
+
+		.centeredPair {
+			justify-content: center;
+			display: flex;
+			flex-flow: row wrap;
+			width: 100%;
+			max-width: 80em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.pairMember {
+			flex: 1;
+			min-width: 20em;
+			margin: 2em;
+		}
+
+		.centered {
+			max-width: 74em;
+			margin: 2em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		#navBar {
+			background-color: black;
+			border-bottom: 1px solid white;
+			display: flex;
+			justify-content: center;
+			flex-flow: row wrap;
+			position: fixed;
+			width: 101%;
+			z-index: 1000;
+			margin-top: -10px;
+		}
+
+		#websiteTitle {
+			margin: 5px;
+			margin-left: 10px;
+			vertical-align:middle;
+			padding-top: 0.4em;
+			cursor: pointer;
+		}
+
+		#titleLogo {
+			height: 5em;
+			width: 5em;
+			padding: 0px;
+			padding-left: 1em;
+			padding-right: 1em;
+			float: left;
+		}		
+
+		#backgroundAnimation {
+			height: 100%;
+			width: 100%;
+			position: fixed;
+			z-index: -100;
+		}
+
+		#introContainer {
+			width: 40em;
+			margin-left: auto;
+			margin-right: auto;
+			text-align:center;
+		}
+
+		#navMenu {
+			padding-top: 1.5em;
+			text-align: right;
+		}
+
+		#Projects {
+			display: none;
+		}
+
+		#Contact {
+			display: none;
+		}
+
+	</style>
+
+	<body>
+
+		<div id='navBar'>
+			<span class='navBarItem'>
+				<div id='titleLogo'></div>
+				<h1 id='websiteTitle' onclick='select("About", 0)'>Chris Stroemel</h1>
+			</span>
+			<span class='navBarItem' id='navMenu'>
+				<a class='navLink' onclick='select("About", 800)'>About</a>
+				<a class='navLink' onclick='select("Projects", 0)'>Projects</a>
+				<a class='navLink' onclick='select("Contact", 0)'>Contact</a>
+			</span>
+		</div>
+
+		<div id='backgroundAnimation'> </div>
+		
+
+		<div id='About'>
+			<div class='spacer'></div>
+			<div class='container' id='introContainer'>
+				<h1><span class='enormous'>Hi,</span><span class='big'> my name is</span> <span class='enormous'>Chris</span></h1>
+
+				<h1>I like to <span class='big'>make</span> things.</h1>
+			</div> 
+			<div class='spacer'></div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>This is me.</h1>
+					<img src='Portrait.jpg'></img>
+				</div>
+				<div class='pairMember container'>
+					<h1>These are some things I am interested in.</h1>
+					<ul style='list-style-type: square; font-size: 1.2em;'>
+						<li>Numerical computing
+							<ul>
+								<li>Gradient free optimization</li>
+								<li>Root finding</li>
+								<li>Finite element/ volume/ difference methods</li>
+							</ul>
+						</li>
+						<li>Machine intelligence and adaptation
+							<ul>
+								<li>Mechanical structural optimization</li>
+								<li>Evolutionary algorithms</li>
+								<li>Vision processing and autonomous control</li>
+								<li>Reinforcement learning</li>
+							</ul>
+						</li>
+						<li>Composite materials
+							<ul>
+								<li>Metal matrix composites</li>
+								<li>Matrix electrodeposition</li>
+								<li>Smart composites</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class='centered'>
+				<div class='pairMember container'>
+					<h1>This is what I have to say about myself.</h1>
+					<p>
+						I have a passion for both engineering and computing.
+						I'm an undergraduate student at Washington State University.  I get my BS
+						in mechanical engineering on September 1st, 2017.  I am currently
+						planning to take a gap year and work in industry before returning
+						to graduate school for applied math.
+					</p>
+					<p>
+						I find that research is the most rewarding kind of work there
+						is.  Regardless of whether it's in an academic or industrial setting,
+						to be able to continue to push boundaries and develop new technologies
+						is always my goal.
+					</p>
+				</div>
+			</div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>These are things I find fun.</h1>
+					<ul style='list-style-type: square; font-size: 1.2em;'>
+						<li>Hiking</li>
+						<li>Road trips</li>
+						<li>Going to the gym</li>
+						<li>Warhawk (2007 videogame)</li>
+						<li>Thinking about stuff</li>
+					</ul>
+				</div>
+				<div class='pairMember container'>
+					<h1>This is also me.</h1>
+					<img src='Landscape.jpg'></img>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div id='Projects'>
+			<div class='smallSpacer'></div>
+			<div class='centered'>
+				<div class='pairMember container'>
+					<h1>Some of the things I have worked on.</h1>
+					<p>
+						I've worked on a lot of different projects, most of which didn't make
+						the cut for this website.  A few of them are listed here.  You can 
+						click on each image for more information.
+					<p/>
+				</div>
+			</div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>WSU Mars Rover</h1>
+					<a href='http://www.seattletimes.com/education-lab/wsu-everett-students-build-mars-rover-place-2nd-in-global-contest/'>
+						<img src='Rover.jpg'></img>
+					</a>
+					<p>An explanation of the picture.</p>
+				</div>
+				<div class='pairMember container'>
+					<h1>Design, Build, Fly</h1>
+					<a href='FinalReport.pdf'>
+						<img src='dbfReport.png'></img>
+					</a>
+				</div>
+			</div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>Web Development Presentation</h1>
+					<a href='https://www.youtube.com/watch?v=Vjru4J5qh7A'>
+						<img src='WebDev.png'></img>
+					</a>
+				</div>
+				<div class='pairMember container'>
+					<h1>Technical Instructions</h1>
+					<a href='TechnicalInstructions.pdf'>
+						<img src='TechnicalInstructions.png'></img>
+					</a>
+				</div>
+			</div>
+			<div class='centered'>
+				<div class='pairMember container'>
+					<h1>My philosophy about work and learning.</h1>
+					<p>
+						If something isn't hard, then it's probably not worth doing.  I like to
+						push myself into new areas that I'm not familiar with so that I can
+						continue to grow my skills and knowledge.
+					<p/>
+				</div>
+			</div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>This is some of my experience.</h1>
+					<ul style='list-style-type: square; font-size: 1.2em;'>
+						<li>Undergraduate research
+							<ul>
+								<li>Developed novel global discrete optimization algorithms</li>
+								<li>Wrote and maintained numerical codes</li>
+							</ul>
+						</li>
+						<li>WSU Mars Rover
+							<ul>
+								<li>Reduced weight through finite element design studies</li>
+								<li>Designed and manufactured custom high traction tire treads</li>
+								<li>Designed and manufactured soil sampling system</li>
+								<li>Designed and manufactured power and data distribution system</li>
+								<li>Developed vision-based autonomous navigation capability</li>
+							</ul>
+						</li>
+						<li>Design, Build, Fly
+							<ul>
+								<li>Performed aerodynamic design studies for configuration selection</li>
+								<li>Performed CFD analysis</li>
+								<li>Designed and manufactured the tail control surfaces and folding mechanisms</li>
+								<li>Manufactured carbon fiber composite structures</li>
+							</ul>
+						</li>
+						<li>Boeing Senior Capstone Project
+							<ul>
+								<li>Performed economic and market analysis</li>
+								<li>Sourced materials and components from suppliers</li>
+								<li>Applied electrochemical material deposition techniques</li>
+								<li>Characterized the electrical properties of a new material</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class='pairMember container'>
+					<h1>These are some of my skills.</h1>
+					<ul style='list-style-type: square; font-size: 1.2em;'>
+						<li>Software development
+							<ul>
+								<li>Assembly, C, Java, Javascript, Python, Scheme</li>
+								<li>High performance/ parallel/ distributed computing</li>
+								<li>Peer to peer distributed systems</li>
+								<li>Web development</li>
+							</ul>
+						</li>
+						<li>Engineering
+							<ul>
+								<li>Design optimization</li>
+								<li>Fiber reinforced composites</li>
+								<li>CNC machining</li>
+								<li>General competency (EIT certified)</li>
+							</ul>
+						</li>
+						<li>CAD and simulation software
+							<ul>
+								<li>Solidworks (CSWA and CSWA-S certified)</li>
+								<li>Siemens NX</i>
+								<li>ANSYS</li>
+							</ul>
+						</li>
+						<li>Office software
+							<ul>
+								<li>MATLAB/ GNU Octave</li>
+								<li>Minitab statistical software</li>
+								<li>Excel, Word, etc.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+
+		<dib id='Contact'>
+			<div class='smallSpacer'></div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>Contacting me is encouraged.</h1>
+					<p>
+						Whether you want to discuss a research or work opportunity, or just have
+						a conversation about engineering and computing, I am always thrilled to
+						meet new people.  Drop me a line and let's talk.
+					</p>
+				</div>
+				<div class='pairMember container'>
+					<h1>How to reach me.</h1>
+					<ul style='list-style-type: square; font-size: 1.2em;'>
+						<li>E-mail:
+							<ul>
+								<li>christian.stroemel@wsu.edu</li>
+							</ul>
+						</li>
+						<li>Phone number (fake):
+							<ul>
+								<li>(123)-456-7890</li>
+							</ul>
+						</li>
+						<li>Mail (fake):
+							<ul>
+								<li>1234 All Websites Are, Publicly Crawlable, WA 12345</li>
+							</ul>
+						</li>
+					</ul>
+					As an aside, anything on the internet, including Weebly pages, gets indexed
+					by web crawlers and search engines.  Students have been posting personally
+					identifiable information on the public internet for this course.
+				</div>
+			</div>
+		</div>
+	</body>
+
+
+	<script>
+		let currentView = document.getElementById('About')
+
+		function select(viewName, scrollHeight) {
+			const newView = document.getElementById(viewName)
+			currentView.style.display = 'none'
+			newView.style.display = 'inherit'
+			window.scrollTo(0, scrollHeight)
+			currentView = newView
+		}
+	</script>
+
+	<script>
+		let ANIMATION_ENABLED = true
+		let PREVIOUS_TIME = Date.now()
+		const titleLogo = attachRenderer('titleLogo', 1, 38, 0)
+		const background = attachRenderer('backgroundAnimation', 0.75, 800, 2)
+		
+				
+
+		titleLogo.camera.position.z = 100
+		background.camera.position.z = 1000
+
+		
+		
+
+		//const titleGeometry
+
+
+		renderFrame()
+
+
+		function animateFirstScene(elapsedTime) {
+			const rotation = titleLogo.geometry.rotation
+			rotation.x += 0.2 * elapsedTime
+			rotation.y += 0.2 * elapsedTime
+			rotation.z += 0.2 * elapsedTime
+			titleLogo.renderer.render(titleLogo.scene, titleLogo.camera)
+		}
+		
+		function animateSecondScene(elapsedTime) {
+			const rotation = background.geometry.rotation
+			rotation.x += 0.05 * elapsedTime
+			rotation.y += 0.05 * elapsedTime
+			rotation.z += 0.05 * elapsedTime
+			background.renderer.render(background.scene, background.camera)
+		}
+		
+		function renderFrame() {
+			if (ANIMATION_ENABLED) requestAnimationFrame(renderFrame)
+			const newTime = Date.now()
+			const elapsedTime = (newTime - PREVIOUS_TIME) / 1000
+			PREVIOUS_TIME = newTime
+			animateFirstScene(elapsedTime)
+			animateSecondScene(elapsedTime)
+		}
+
+		function attachRenderer(containerName, opacity, radius, detailLevel) {
+			const element = document.getElementById(containerName)
+			const renderer = new THREE.WebGLRenderer({'antialiasing': true})
+			renderer.setSize(element.clientWidth, element.clientHeight)
+			element.appendChild(renderer.domElement)
+			renderer.domElement.style.display = 'inline-block'
+			const w = element.clientWidth / 2
+			const h = element.clientHeight / 2
+			const camera = new THREE.OrthographicCamera(-1 * w, w, h, -1 * h) // look into setting near and far frustrum plane values
+			const scene = new THREE.Scene()
+
+			const dodecahedron = new THREE.DodecahedronGeometry(radius, detailLevel)
+			const geometry = new THREE.EdgesGeometry(dodecahedron)
+			const lineMaterial = new THREE.LineBasicMaterial({'color':0xffffff, 'linewidth':2})
+			const wireFrame = new THREE.LineSegments(geometry, lineMaterial)
+
+			const surfaceMaterial = new THREE.MeshBasicMaterial({'color': 0x000000, 'opacity': opacity, 'transparent': (opacity < 1)})
+			wireFrame.add(new THREE.Mesh(dodecahedron, surfaceMaterial))
+
+			wireFrame.rotation.x = Math.random()
+			wireFrame.rotation.y = Math.random()
+			wireFrame.rotation.z = Math.random()
+
+			scene.add(wireFrame)
+
+			window.addEventListener('resize', function() {
+				const newW = element.clientWidth / 2
+				const newH = element.clientHeight / 2
+				camera.left = -1 * newW
+				camera.right = newW
+				camera.top = newH
+				camera.bottom = -1 * newH
+				camera.updateProjectionMatrix()
+				renderer.setSize(element.clientWidth, element.clientHeight)
+			})
+
+			return ({
+				'renderer': renderer,
+				'scene': scene,
+				'camera': camera,
+				'geometry': wireFrame
+			})
+		}
+
+		//function makeWireFrame
+
+	</script>
+
+</html>
+
+
+
+
+
+
