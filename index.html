@@ -465,14 +465,14 @@
 				viewName = 'About'
 			} else if (originalViewName == 'About') {
 				scrollHeight = 800;
-			}
+			} 
 			const newView = document.getElementById(viewName)
 			currentView.style.display = 'none'
 			newView.style.display = 'inherit'
 			currentView = newView
 			selectIteration = 0
 			window.location.hash = originalViewName
-			window.scrollTo(10000, scrollHeight)
+			window.scrollTo(0, scrollHeight)
 		}
 	</script>
 
