@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<script src='three.js'></script>
-	</head>
-
 	<style>
 		@font-face {
 			font-family: 'Roboto Slab';
@@ -189,7 +185,7 @@
 			<div class='centeredPair'>
 				<div class='pairMember container'>
 					<h1>This is me.</h1>
-					<img src='Portrait.jpg'></img>
+					<img src='PortraitSmallCompressed.jpg'></img>
 				</div>
 				<div class='pairMember container'>
 					<h1><!--These are some things-->Topics I am interested in.</h1>
@@ -224,16 +220,15 @@
 					<h1><!--This is what I have to say about myself.-->A brief bit about me.</h1>
 					<p>
 						I have a passion for both engineering and computing.
-						I am an undergraduate student at Washington State University.  I get my BS
-						in mechanical engineering on September 1st, 2017.  I am currently
+						I graduated from Washington State University with my BS
+						in mechanical engineering in September 2017.  I am currently
 						planning to take a gap year and work in industry before returning
 						to graduate school for applied math.
 					</p>
 					<p>
 						I find that research is the most rewarding kind of work there
 						is.  Regardless of whether it's in an academic or industrial setting,
-						to be able to continue to push boundaries and develop new technologies
-						is always my goal.
+						it is always my goal to continue to push boundaries and develop new technologies.
 					</p>
 				</div>
 			</div>
@@ -250,7 +245,7 @@
 				</div>
 				<div class='pairMember container'>
 					<h1>This is also me.</h1>
-					<img src='Landscape.jpg'></img>
+					<img src='LandscapeSmallCompressed.jpg'></img>
 				</div>
 			</div>
 		</div>
@@ -274,7 +269,7 @@
 				<div class='pairMember container'>
 					<h1>WSU Mars Rover</h1>
 					<a href='http://www.seattletimes.com/education-lab/wsu-everett-students-build-mars-rover-place-2nd-in-global-contest/'>
-						<img src='Rover.jpg'></img>
+						<img src='RoverSmallCompressed.jpg'></img>
 					</a>
 					<p>
 						Collegiate mars rover design and build competition.  Came in
@@ -324,7 +319,7 @@
 				<div class='pairMember container'>
 					<h1>My philosophy on work and learning.</h1>
 					<p>
-						If something is not challenging, then it is probably not worth doing.  I like to
+						If a problem isn't challenging, then it's probably not worth solving.  I like to
 						push myself into new areas that I am not familiar with so that I can
 						continue to grow my skills and knowledge.
 					</p>
@@ -445,129 +440,9 @@
 			</div>
 		</div>
 	</body>
-
-
-	<script>
-		let currentView = document.getElementById('About')
-		window.addEventListener('hashchange', handleHash)
-
-		handleHash()
-		function handleHash() {
-			if (window.location.hash) {
-				select(window.location.hash.slice(1), true)
-			}
-		}
-
-		function select(originalViewName, calledFromHandleHash) {
-			let viewName = originalViewName
-			let scrollHeight = 0
-			if (viewName == 'Landing') {
-				viewName = 'About'
-			} else if (originalViewName == 'About') {
-				scrollHeight = 800;
-			} 
-			const newView = document.getElementById(viewName)
-			currentView.style.display = 'none'
-			newView.style.display = 'inherit'
-			currentView = newView
-			selectIteration = 0
-			window.location.hash = originalViewName
-			window.scrollTo(0, scrollHeight)
-		}
-	</script>
-
-	<script>
-		let ANIMATION_ENABLED = true
-		let PREVIOUS_TIME = Date.now()
-		const titleLogo = attachRenderer('titleLogo', 1, 38, 0)
-		const background = attachRenderer('backgroundAnimation', 0.75, 800, 2)
-		
-				
-
-		titleLogo.camera.position.z = 100
-		background.camera.position.z = 1000
-
-		
-		
-
-		//const titleGeometry
-
-
-		renderFrame()
-
-
-		function animateFirstScene(elapsedTime) {
-			const rotation = titleLogo.geometry.rotation
-			rotation.x += 0.2 * elapsedTime
-			rotation.y += 0.2 * elapsedTime
-			rotation.z += 0.2 * elapsedTime
-			titleLogo.renderer.render(titleLogo.scene, titleLogo.camera)
-		}
-		
-		function animateSecondScene(elapsedTime) {
-			const rotation = background.geometry.rotation
-			rotation.x += 0.05 * elapsedTime
-			rotation.y += 0.05 * elapsedTime
-			rotation.z += 0.05 * elapsedTime
-			background.renderer.render(background.scene, background.camera)
-		}
-		
-		function renderFrame() {
-			if (ANIMATION_ENABLED) requestAnimationFrame(renderFrame)
-			const newTime = Date.now()
-			const elapsedTime = (newTime - PREVIOUS_TIME) / 1000
-			PREVIOUS_TIME = newTime
-			animateFirstScene(elapsedTime)
-			animateSecondScene(elapsedTime)
-		}
-
-		function attachRenderer(containerName, opacity, radius, detailLevel) {
-			const element = document.getElementById(containerName)
-			const renderer = new THREE.WebGLRenderer({'antialiasing': true})
-			renderer.setSize(element.clientWidth, element.clientHeight)
-			element.appendChild(renderer.domElement)
-			renderer.domElement.style.display = 'inline-block'
-			const w = element.clientWidth / 2
-			const h = element.clientHeight / 2
-			const camera = new THREE.OrthographicCamera(-1 * w, w, h, -1 * h) // look into setting near and far frustrum plane values
-			const scene = new THREE.Scene()
-
-			const dodecahedron = new THREE.DodecahedronGeometry(radius, detailLevel)
-			const geometry = new THREE.EdgesGeometry(dodecahedron)
-			const lineMaterial = new THREE.LineBasicMaterial({'color':0xffffff, 'linewidth':2})
-			const wireFrame = new THREE.LineSegments(geometry, lineMaterial)
-
-			const surfaceMaterial = new THREE.MeshBasicMaterial({'color': 0x000000, 'opacity': opacity, 'transparent': (opacity < 1)})
-			wireFrame.add(new THREE.Mesh(dodecahedron, surfaceMaterial))
-
-			wireFrame.rotation.x = Math.random()
-			wireFrame.rotation.y = Math.random()
-			wireFrame.rotation.z = Math.random()
-
-			scene.add(wireFrame)
-
-			window.addEventListener('resize', function() {
-				const newW = element.clientWidth / 2
-				const newH = element.clientHeight / 2
-				camera.left = -1 * newW
-				camera.right = newW
-				camera.top = newH
-				camera.bottom = -1 * newH
-				camera.updateProjectionMatrix()
-				renderer.setSize(element.clientWidth, element.clientHeight)
-			})
-
-			return ({
-				'renderer': renderer,
-				'scene': scene,
-				'camera': camera,
-				'geometry': wireFrame
-			})
-		}
-
-		//function makeWireFrame
-
-	</script>
+	<head>
+		<script src='compiled.js'></script>
+	</head>
 
 </html>
 
