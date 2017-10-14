@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<title>Chris Stroemel</title>
+		<link rel="shortcut icon" type='image/x-icon' href='favicon.ico'/>
 		<script src='three.min.js'></script>
 	</head>
 
@@ -227,7 +228,7 @@
 						I have a passion for both engineering and computing.
 						I graduated from Washington State University with my BS
 						in mechanical engineering in September 2017.  I am currently
-						planning to take a gap year and work in industry before returning
+						planning to work in industry before eventually returning
 						to graduate school for applied math.
 					</p>
 					<p>
@@ -264,7 +265,7 @@
 				<div class='pairMember container'>
 					<h1>Some of the things I have worked on.</h1>
 					<p>
-						I have worked on a lot of different projects, most of which didn't make
+						I've worked on a lot of different projects, most of which didn't make
 						the cut for this website.  A few of them are listed here.  You can 
 						click on each image for more information.
 					<p/>
@@ -298,6 +299,54 @@
 			</div>
 			<div class='centeredPair'>
 				<div class='pairMember container'>
+					<h1>Undergraduate Research</h1>
+					<a href='http://www.seattletimes.com/education-lab/wsu-everett-students-build-mars-rover-place-2nd-in-global-contest/'>
+						<img src='RoverSmallCompressed.jpg'></img>
+					</a>
+					<p>
+						Collegiate mars rover design and build competition.  Came in
+						second place for the 2015-2016 season as a first year team,
+						ahead of more well known universities like Cornell and Yale.
+						The entire rover, which is nearly the size of a Smart Car, was
+						designed and precision manufactured by a team of just 14 mechanical
+						engineering students, including myself. 
+					</p>
+				</div>
+				<div class='pairMember container'>
+					<h1>Boeing Senior Capstone</h1>
+					<a href='FinalReport.pdf'>
+						<img src='dbfReport.png'></img>
+					</a>
+					<p>
+						Final report from the 2016-2017 WSU Design, Build, Fly team.
+						Designed and manufactured a compact, folding UAV.
+					</p>
+				</div>
+			</div>
+			<div class='centeredPair'>
+				<div class='pairMember container'>
+					<h1>Prototype Autonomous Vehicle</h1>
+					<a href='http://www.seattletimes.com/education-lab/wsu-everett-students-build-mars-rover-place-2nd-in-global-contest/'>
+						<img src='RoverSmallCompressed.jpg'></img>
+					</a>
+					<p>
+						Collegiate mars rover design and build competition.  Came in
+					</p>
+				</div>
+				<div class='pairMember container'>
+					<h1>Everett Fire Department Data Analysis</h1>
+					<a href='FinalReport.pdf'>
+						<img src='dbfReport.png'></img>
+					</a>
+					<p>
+						Final report from the 2016-2017 WSU Design, Build, Fly team.
+						Designed and manufactured a compact, folding UAV.
+					</p>
+				</div>
+			</div>
+			<!--
+			<div class='centeredPair'>
+				<div class='pairMember container'>
 					<h1>Web Development Presentation</h1>
 					<a href='https://www.youtube.com/watch?v=Vjru4J5qh7A'>
 						<img src='WebDev.png'></img>
@@ -320,6 +369,7 @@
 					</p>
 				</div>
 			</div>
+			-->
 			<div class='centered'>
 				<div class='pairMember container'>
 					<h1>My philosophy on work and learning.</h1>
@@ -510,7 +560,7 @@
 
 		function attachRenderer(containerName, opacity, radius, detailLevel) {
 			const element = document.getElementById(containerName)
-			const renderer = new THREE.WebGLRenderer({'antialias': true})
+			const renderer = new THREE.WebGLRenderer({'antialias': false})
 			renderer.setSize(element.clientWidth, element.clientHeight)
 			element.appendChild(renderer.domElement)
 			renderer.domElement.style.display = 'inline-block'
