@@ -2,6 +2,7 @@
 
 <html>
 	<head>
+		<title>Chris Stroemel</title>
 		<script src='three.min.js'></script>
 	</head>
 
@@ -30,7 +31,7 @@
 		}
 
 		p {
-			font-size: 1.2em;
+			font-size: 1.1em;
 		}
 
 
@@ -478,11 +479,6 @@
 		titleLogo.camera.position.z = 100
 		background.camera.position.z = 1000
 
-		
-		
-
-		//const titleGeometry
-
 
 		renderFrame()
 
@@ -514,7 +510,7 @@
 
 		function attachRenderer(containerName, opacity, radius, detailLevel) {
 			const element = document.getElementById(containerName)
-			const renderer = new THREE.WebGLRenderer({'antialiasing': true})
+			const renderer = new THREE.WebGLRenderer({'antialias': true})
 			renderer.setSize(element.clientWidth, element.clientHeight)
 			element.appendChild(renderer.domElement)
 			renderer.domElement.style.display = 'inline-block'
@@ -555,8 +551,6 @@
 				'geometry': wireFrame
 			})
 		}
-
-		//function makeWireFrame
 
 	</script>
 
